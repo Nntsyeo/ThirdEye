@@ -52,6 +52,7 @@ captures/
 .idea/inspectionProfiles/
 .idea/navEditor.xml
 .idea/jarRepositories.xml
+.idea/deploymentTargetSelector.xml
 
 # Keystore files
 *.jks
