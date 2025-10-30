@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:orientation="vertical"
+    tools:ignore="HardcodedText">
+
+    <Button
+        android:id="@+id/btn_fusion_vision"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="Fusion Vision"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_recycle_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="RecycleView Focusable"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_api"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="API"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_camera"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="Camera"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_event"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="TP Event"
+        android:textAllCaps="false" />
+
+
+    <Button
+        android:id="@+id/btn_player"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="SurfaceView"
+        android:textAllCaps="false" />
+
+
+</LinearLayout>

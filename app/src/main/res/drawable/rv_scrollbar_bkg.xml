@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <item
+        android:bottom="0dp"
+        android:top="0dp">
+        <shape>
+            <corners android:radius="2dp" />
+            <solid android:color="@color/rv_scroll_bar_TrackVertical" />
+        </shape>
+    </item>
+</layer-list>

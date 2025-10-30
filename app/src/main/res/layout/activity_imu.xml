@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tvAccelerometer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="加速度计数据..."
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvGyroscope"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="陀螺仪数据..."
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvMagnetometer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="磁力计数据..."
+        android:textSize="18sp" />
+
+</LinearLayout>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@android:color/transparent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="120dp"
+        android:padding="20dp"
+        android:background="@drawable/shape_device_selected"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_title_closed"
+            android:layout_width="match_parent"
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            android:text="Tip"
+            android:gravity="center"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tv_content_closed"
+            android:textColor="@color/white"
+            android:layout_marginVertical="20dp"
+            android:textSize="22sp"
+            android:text="With the ability to enhance and augment the real world, TCL RayNeo X2 AR glasses have the potential to revolutionize the way we interact with the world around us."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/btn_ok"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:text="Confirm"
+                android:layout_height="match_parent"/>
+            <Button
+                android:id="@+id/btn_cancel"
+                android:layout_width="0dp"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:text="cancel"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

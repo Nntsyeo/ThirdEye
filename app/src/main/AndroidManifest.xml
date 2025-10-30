@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.ffalcon.mercury.android.sdk.demo">
+
+    <uses-permission android:name="android.permission.CAMERA" />
+
+
+    <application
+        android:name=".MercuryDemoApplication"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MercuryAndroidSDK"
+        tools:targetApi="31">
+
+        <meta-data
+            android:name="com.rayneo.mercury.app"
+            android:value="true" />
+
+        <activity
+            android:name=".DemoHomeActivity"
+            android:exported="true"
+            android:screenOrientation="landscape">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.HOME" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".ui.activity.DialogActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".ui.activity.recycle.FixedFocusPosRVActivity"
+            android:screenOrientation="landscape" />
+
+        <activity
+            android:name=".ui.activity.recycle.MovedFocusPosRVActivity"
+            android:screenOrientation="landscape" />
+
+        <activity
+            android:name=".ui.activity.FragmentDemoActivity"
+            android:screenOrientation="landscape" />
+
+        <activity android:name=".ui.activity.fusion.FusionVisionHomeActivity" />
+
+        <activity android:name=".ui.activity.fusion.FusionVisionActivity" />
+
+        <activity android:name=".ui.activity.fusion.MirrorContainerViewActivity" />
+
+        <activity android:name=".ui.activity.recycle.RecycleViewHomeActivity" />
+
+        <activity android:name=".ui.activity.api.APIActivity" />
+
+        <activity android:name=".ui.activity.camera.CameraActivity" />
+
+        <activity android:name=".ui.activity.tp.TPEventActivity" />
+
+        <activity android:name=".ui.activity.player.VideoPlayActivity" />
+
+        <activity android:name=".ui.activity.fusion.PAGActivity" />
+
+        <activity android:name=".ui.activity.api.APIHomeActivity" />
+
+        <activity android:name=".ui.activity.api.IMUActivity" />
+
+        <activity android:name=".ui.activity.camera.CameraHomeActivity" />
+
+    </application>
+
+</manifest>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="@dimen/rayneo_safety_padding_horizontal"
+    android:paddingVertical="@dimen/rayneo_safety_padding_vertical">
+
+    <TextureView
+        android:id="@+id/camera_preview"
+        android:layout_width="480dp"
+        android:layout_height="360dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <ImageView
+        android:id="@+id/thumbnail_view"
+        android:layout_width="176dp"
+        android:layout_height="144dp"
+        android:layout_margin="8dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:contentDescription="@null"
+        android:rotation="90"
+        android:scaleType="centerCrop"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/capture_image_button"
+        android:layout_width="wrap_content"
+        android:layout_height="65dp"
+        android:layout_marginBottom="20dp"
+        android:text="点击右镜腿拍照"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:ignore="HardcodedText" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

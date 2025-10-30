@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/rayneo_safety_padding_horizontal"
+    android:paddingVertical="@dimen/rayneo_safety_padding_vertical">
+
+    <Button
+        android:id="@+id/btn_camera"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="normal"
+        android:textAllCaps="false"
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/btn_vga"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="VGA"
+        android:textAllCaps="false"
+        tools:ignore="HardcodedText" />
+
+</LinearLayout>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list android:shape="oval" xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:height="80dp"
+        android:bottom="0dp"
+        android:top="0dp"
+        >
+        <shape>
+            <corners android:radius="2dp"/>
+            <solid android:color="@color/rv_scroll_bar_ThumbVertical"/>
+        </shape>
+    </item>
+</layer-list>

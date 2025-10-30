@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="82dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_content"
+        android:layout_width="400dp"
+        android:layout_height="82dp"
+        android:orientation="vertical"
+        android:paddingHorizontal="26dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingDefaultResource">
+
+        <ImageView
+            android:id="@+id/ivPhoto"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:layout_marginVertical="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvPhoto"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:background="@drawable/shape_circle_line_white"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="@id/ivPhoto"
+            app:layout_constraintEnd_toEndOf="@id/ivPhoto"
+            app:layout_constraintStart_toStartOf="@+id/ivPhoto"
+            app:layout_constraintTop_toTopOf="@+id/ivPhoto"
+            tools:text="A" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="19dp"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/ivPhoto"
+            app:layout_constraintEnd_toStartOf="@+id/tv_phone"
+            app:layout_constraintStart_toEndOf="@id/ivPhoto"
+            app:layout_constraintTop_toTopOf="@id/ivPhoto"
+            app:layout_goneMarginEnd="40dp"
+            tools:text="Andy" />
+
+        <TextView
+            android:id="@+id/tv_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="0.6"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/ivPhoto"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/ivPhoto"
+            tools:text="18938867949" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
