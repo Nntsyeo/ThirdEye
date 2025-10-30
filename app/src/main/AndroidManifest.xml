@@ -26,13 +26,26 @@
             android:name=".DemoHomeActivity"
             android:exported="true"
             android:screenOrientation="landscape">
+            <!-- Intent filter to show app in launcher/app drawer -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <!-- HOME intent filter removed to prevent Android 12 AOSP bug:
+                 Intent Filter Verification Service crash due to WorkManager 10KB data limit.
+                 If you need launcher functionality, use programmatic assignment via ADB:
+                 adb shell cmd package set-home-activity com.ffalcon.thirdeye.demo/.DemoHomeActivity
+
+                 AOSP Bug Reference: https://android.googlesource.com/platform/frameworks/base/+/4978d1ad
+            -->
+            <!-- REMOVED TO PREVENT CRASH:
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.HOME" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+            -->
         </activity>
 
         <activity
