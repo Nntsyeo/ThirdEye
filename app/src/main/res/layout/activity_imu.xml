@@ -26,7 +26,15 @@
         android:id="@+id/tvMagnetometer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:text="磁力计数据..."
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvPressure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="气压计数据..."
         android:textSize="18sp" />
 
 </LinearLayout>

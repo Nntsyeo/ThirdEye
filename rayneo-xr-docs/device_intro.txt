@@ -1,0 +1,118 @@
+Device Introduction​
+
+RayNeo X Series AR glasses provide developers with a hardware platform featuring full-color
+display, high brightness, and extreme lightness. Combined with high-performance computing
+and open interfaces, they empower efficient development and deployment of innovative AR
+applications. ​
+
+Glasses Overview​
+RayNeo X3 Pro​
+
+RayNeo X3 Pro is the flagship AR glasses released by RayNeo in 2025. Based on the new
+Qualcomm Snapdragon AR1 platform, it adopts the world's smallest mass-produced full-color
+MicroLED optical engine, significantly enhancing display brightness and color performance.
+With lighter weight, upgraded interaction methods, and greatly enhanced AI capabilities and
+application ecology, it targets high-end consumer and professional markets. ​
+
+RayNeo X2​
+
+RayNeo X2 is a consumer-grade true AR glasses innovatively launched by RayNeo, featuring a
+lightweight integrated design. Equipped with the Qualcomm Snapdragon XR2 platform and a
+MicroLED +光波导 (diffractive waveguide) display solution, it supports multiple interaction
+methods (temple touch, smart ring, voice), making it suitable for daily wear and in-depth
+developer experience. ​
+
+Core Specifications Comparison​
+Specification/Model​
+Chip Platform​
+Storage Configuration​
+Display Solution​
+
+RayNeo X3 Pro​
+Qualcomm Snapdragon AR1 Gen1​
+
+4GB RAM + 32GB ROM​
+0.36cc full-color MicroLED optical
+engine + diffractive waveguide​
+Refresh Rate​
+Up to 60Hz​
+Resolution​
+640×480​
+FOV (Field of View)​
+30°​
+PPD (Pixels Per Degree)​ 27​
+
+RayNeo X2
+Qualcomm Snapdragon XR2​
+6GB RAM + 128GB ROM​
+Diffractive waveguide + full-color
+MicroLED​
+Up to 60Hz​
+640×480​
+25°​
+32​
+
+Brightness​
+Camera​
+Sensors​
+
+Speakers​
+Microphones​
+Interaction Methods​
+Weight​
+Dimensions​
+Connectivity​
+USB​
+Battery/Lifespan​
+Charging​
+Myopia Solution​
+Operating System​
+
+Peak 6000nits, Average 3500nits
+12MP main camera (RGB) + spatial
+camera (VGA)​
+- IMU sensors: gyroscope,
+accelerometer, magnetometer <br> Removal sensor: one on left temple​
+2 built-in stereo speakers, support
+reverse noise cancellation, stereo
+output​
+3 microphones (one on each temple,
+one in front)​
+Temple touch, voice, watch/phone
+interaction​
+76g​
+L153.16mm × W45.65mm ×
+H168.6mm​
+- Wi-Fi 6: supports 2.4G&5G dual-band,
+802.11 a/b/g/n/ac <br>​
+- Bluetooth 5.2​
+USB 2.0, Type C interface​
+245mAh, 3-5 hours moderate use​
+5V voltage, max charging current
+735mA​
+- Snap-on lenses <br> - Full-fit lenses​
+RayNeo AI OS 2.0​
+
+📍Return to the homepage​
+
+Peak >1500nits​
+Single camera: 16MP, 1080p video​
+- IMU sensors: gyroscope,
+accelerometer, magnetometer,
+GPS <br> - Removal sensor: one
+on right temple​
+Dual speakers on left/right
+temples​
+3 microphones, support
+directional sound pickup​
+Temple touch, smart ring, voice​
+119g​
+--​
+- Wi-Fi 5 <br> - Bluetooth 5.2​
+--​
+590mAh, 2-3 hours moderate use​
+5V voltage​
+Snap-on lenses​
+RayNeo OS​
+
+

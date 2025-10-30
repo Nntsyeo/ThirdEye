@@ -20,6 +20,7 @@ class IMUActivity : BaseMirrorActivity<ActivityImuBinding>(), SensorEventListene
     private var accelerometerSensor: Sensor? = null
     private var gyroscopeSensor: Sensor? = null
     private var magnetometerSensor: Sensor? = null
+    private var pressureSensor: Sensor? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +39,8 @@ class IMUActivity : BaseMirrorActivity<ActivityImuBinding>(), SensorEventListene
         gyroscopeSensor = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE)
         // 使用 TYPE_MAGNETIC_FIELD 获取磁力计
         magnetometerSensor = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD)
+        // 使用 TYPE_PRESSURE 获取气压计
+        pressureSensor = sensorManager.getDefaultSensor(Sensor.TYPE_PRESSURE)
 
         mBindingPair.updateView {
             // 检查设备是否支持这些传感器
@@ -49,6 +52,9 @@ class IMUActivity : BaseMirrorActivity<ActivityImuBinding>(), SensorEventListene
             }
             if (magnetometerSensor == null) {
                 tvMagnetometer.text = "磁力计不可用"
+            }
+            if (pressureSensor == null) {
+                tvPressure.text = "气压计不可用"
             }
         }
     }
@@ -64,6 +70,9 @@ class IMUActivity : BaseMirrorActivity<ActivityImuBinding>(), SensorEventListene
             sensorManager.registerListener(this, it, SensorManager.SENSOR_DELAY_NORMAL)
         }
         magnetometerSensor?.let {
+            sensorManager.registerListener(this, it, SensorManager.SENSOR_DELAY_NORMAL)
+        }
+        pressureSensor?.let {
             sensorManager.registerListener(this, it, SensorManager.SENSOR_DELAY_NORMAL)
         }
     }
@@ -118,6 +127,14 @@ class IMUActivity : BaseMirrorActivity<ActivityImuBinding>(), SensorEventListene
                     val z = event.values[2]
                     tvMagnetometer.text =
                         "磁力计:\nX: %.2f μT\nY: %.2f μT\nZ: %.2f μT".format(x, y, z)
+                }
+
+                Sensor.TYPE_PRESSURE -> {
+                    val pressure = event.values[0]
+                    // 使用标准大气压 (1013.25 hPa) 计算相对高度
+                    val altitude = SensorManager.getAltitude(SensorManager.PRESSURE_STANDARD_ATMOSPHERE, pressure)
+                    tvPressure.text =
+                        "气压计:\n压力: %.2f hPa\n高度: %.2f m".format(pressure, altitude)
                 }
             }
         }
