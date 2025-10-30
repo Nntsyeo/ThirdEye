@@ -1,0 +1,109 @@
+name: Claude Code Review
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  claude-review:
+    if: contains(github.event.comment.body, '@claude-review')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+      id-token: write
+      actions: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+          persist-credentials: true
+
+      - name: React to trigger comment
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api \
+            repos/${{ github.repository }}/issues/comments/${{ github.event.comment.id }}/reactions \
+            -f content='eyes'
+
+      - name: Fetch all remote branches
+        run: git fetch --all --tags
+
+      - name: Run Claude Code Review and Merge Assistant
+        id: claude-review
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          prompt: |
+            REPO: ${{ github.repository }}
+            ISSUE URL: ${{ github.event.issue.html_url }}
+            ISSUE NUMBER: ${{ github.event.issue.number }}
+            ISSUE COMMENT AUTHOR: ${{ github.event.comment.user.login }}
+            ISSUE COMMENT BODY: ${{ github.event.comment.body }}
+
+            You are assisting with reviewing and merging a pull request into the `main` branch.
+            Follow this workflow:
+            1. Determine which PR branch to merge. If the user's comment specifies a branch or PR number, use it. Otherwise:
+               - If exactly one open PR exists, use that branch.
+               - If multiple PRs exist, ask the user (by replying on the issue) which branch/PR to merge and wait for confirmation.
+            2. Review the selected PR using the guidance in `CLAUDE.md`. Provide structured feedback covering:
+               - Code quality and best practices
+               - Potential bugs or issues
+               - Performance considerations
+               - Security concerns
+               - Test coverage and missing tests
+            3. Post the review summary as an issue comment and ask the user to confirm or request fixes.
+            4. If the user requests changes or clarification, continue the conversation on the issue until the user explicitly approves proceeding with the merge.
+            5. Once approved, ensure the PR branch is up to date with `main` (rebase or merge as needed) before merging. Confirm tests pass or note if they were not run.
+            6. Merge the PR into `main`. If the user previously asked to delete the branch, delete it after merging; otherwise ask the user if the branch should be deleted.
+            7. After the merge (and optional branch deletion), close the issue that triggered this workflow with a summary of actions taken.
+
+            Use GitHub CLI commands for interactions (e.g., `gh pr view`, `gh pr merge`, `gh issue comment`, `gh pr comment`, `gh pr list`). Clearly log each decision in your comments.
+
+          # See https://github.com/anthropics/claude-code-action/blob/main/docs/usage.md
+          # or https://docs.claude.com/en/docs/claude-code/cli-reference for available options
+          claude_args: >-
+            --allowed-tools "Bash(gh issue view:*)
+            ,Bash(gh search:*)
+            ,Bash(gh issue list:*)
+            ,Bash(gh issue comment:*)
+            ,Bash(gh issue close:*)
+            ,Bash(gh pr comment:*)
+            ,Bash(gh pr diff:*)
+            ,Bash(gh pr view:*)
+            ,Bash(gh pr list:*)
+            ,Bash(gh pr merge:*)
+            ,Bash(gh pr checkout:*)
+            ,Bash(gh pr status:*)
+            ,Bash(gh pr edit:*)
+            ,Bash(gh release view:*)
+            ,Bash(git fetch:*)
+            ,Bash(git status:*)
+            ,Bash(git merge:*)
+            ,Bash(git rebase:*)
+            ,Bash(git pull:*)
+            ,Bash(git push:*)
+            ,Bash(git checkout:*)
+            ,Bash(git commit:*)
+            ,Bash(git reset:*)
+            ,Bash(git branch:*)
+            ,Bash(git add:*)
+            ,Bash(git diff:*)
+            ,Bash(git apply:*)
+            ,Bash(git mv:*)
+            ,Bash(mv:*)
+            ,Bash(cp:*)
+            ,Bash(rm:*)
+            ,Bash(find:*)
+            ,Bash(ls:*)
+            ,Bash(cat:*)
+            ,Bash(touch:*)
+            ,Bash(echo:*)
+            ,Bash(sed:*)
+            ,Bash(perl:*)"
+
