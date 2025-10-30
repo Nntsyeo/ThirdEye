@@ -17,6 +17,6 @@ dependencyResolutionManagement {
         }
     }
 }
-rootProject.name = "MercuryAndroidSDK"
+rootProject.name = "ThirdEye"
 include ':app'
 include ':MercurySDK'

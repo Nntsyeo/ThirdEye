@@ -7,7 +7,7 @@
 
 
 
-    <com.ffalcon.mercury.android.sdk.demo.ui.wedget.TitleView
+    <com.ffalcon.thirdeye.demo.ui.wedget.TitleView
         android:id="@+id/phoneTitleView"
         android:layout_width="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
