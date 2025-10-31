@@ -60,12 +60,14 @@
 
     <TextView
         android:id="@+id/tv_tv_location_info"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:textSize="35sp"
+        android:textSize="30sp"
+        android:maxLines="3"
         app:layout_constraintLeft_toRightOf="@+id/tv_location"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_location"
-        tools:text="connect" />
+        tools:text="纬度: 22.543210\n经度: 114.123456\n海拔: 45.0 m (±12.0 m)" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

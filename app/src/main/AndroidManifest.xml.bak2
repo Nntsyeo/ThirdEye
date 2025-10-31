@@ -84,7 +84,7 @@
 
         <activity android:name=".ui.activity.api.APIHomeActivity" />
 
-        <activity android:name=".ui.activity.api.IMUActivity" />
+        <activity android:name=".ui.activity.api.IMUActivity" android:exported="true" />
 
         <activity android:name=".ui.activity.camera.CameraHomeActivity" />
 

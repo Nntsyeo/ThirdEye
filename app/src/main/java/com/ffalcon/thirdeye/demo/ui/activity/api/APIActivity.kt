@@ -1,7 +1,11 @@
 package com.ffalcon.thirdeye.demo.ui.activity.api
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.View
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -22,6 +26,32 @@ import org.json.JSONObject
 
 class APIActivity : BaseMirrorActivity<ActivityApiBinding>() {
     private var mLauncher: Launcher? = null
+
+    // Location permission launcher
+    private val locationPermissionRequest = registerForActivityResult(
+        ActivityResultContracts.RequestMultiplePermissions()
+    ) { permissions ->
+        when {
+            permissions[Manifest.permission.ACCESS_FINE_LOCATION] == true -> {
+                // Fine location access granted, initialize GPS
+                FLogger.i("Location permission granted")
+                initGPS()
+            }
+            permissions[Manifest.permission.ACCESS_COARSE_LOCATION] == true -> {
+                // Coarse location access granted, initialize GPS
+                FLogger.i("Coarse location permission granted")
+                initGPS()
+            }
+            else -> {
+                // No location access granted
+                FLogger.w("Location permission denied")
+                mBindingPair.updateView {
+                    tvTvLocationInfo.text = "需要位置权限"
+                }
+            }
+        }
+    }
+
     private val response =
         OnResponseListener { response ->
             if (response?.getData() == null) return@OnResponseListener
@@ -33,11 +63,6 @@ class APIActivity : BaseMirrorActivity<ActivityApiBinding>() {
                     val mElapsedRealtimeNanos = jo.getLong("mElapsedRealtimeNanos")
                     val mLatitude = jo.getDouble("mLatitude")
                     val mLongitude = jo.getDouble("mLongitude")
-                    runOnUiThread {
-                        mBindingPair.updateView {
-                            tvTvLocationInfo.text = "$mLatitude,$mLongitude"
-                        }
-                    }
                     val mAltitude = jo.getDouble("mAltitude")
                     val mSpeed = jo.getDouble("mSpeed")
                     val mBearing = jo.getDouble("mBearing")
@@ -46,6 +71,21 @@ class APIActivity : BaseMirrorActivity<ActivityApiBinding>() {
                     val mSpeedAccuracyMetersPerSecond =
                         jo.getDouble("mSpeedAccuracyMetersPerSecond")
                     val mBearingAccuracyDegrees = jo.getDouble("mBearingAccuracyDegrees")
+
+                    runOnUiThread {
+                        mBindingPair.updateView {
+                            // Display location with altitude
+                            val locationText = buildString {
+                                append("纬度: %.6f\n".format(mLatitude))
+                                append("经度: %.6f\n".format(mLongitude))
+                                append("海拔: %.1f m".format(mAltitude))
+                                if (mVerticalAccuracyMeters > 0) {
+                                    append(" (±%.1f m)".format(mVerticalAccuracyMeters))
+                                }
+                            }
+                            tvTvLocationInfo.text = locationText
+                        }
+                    }
                     FLogger.i(
 
                         ("======  mProvider:" + mProvider + "  mTime:" + mTime + "  mElapsedRealtimeNanos:" + mElapsedRealtimeNanos
@@ -66,7 +106,28 @@ class APIActivity : BaseMirrorActivity<ActivityApiBinding>() {
         if (DeviceUtil.isX3Device()) {
             collectBleStatus()
         }
-        initGPS()
+        checkLocationPermissionAndInit()
+    }
+
+    private fun checkLocationPermissionAndInit() {
+        when {
+            ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED -> {
+                // Permission already granted
+                initGPS()
+            }
+            else -> {
+                // Request location permissions
+                locationPermissionRequest.launch(
+                    arrayOf(
+                        Manifest.permission.ACCESS_FINE_LOCATION,
+                        Manifest.permission.ACCESS_COARSE_LOCATION
+                    )
+                )
+            }
+        }
     }
 
     private fun initGPS() {
